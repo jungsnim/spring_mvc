@@ -8,8 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach items="${bans}" var="ban" varStatus="idx">
-	<a href="../${idx.index}/0">${ban}</a><br>
+
+<c:forEach items="${midMenu}" var="mid" varStatus="idx">
+	<a href ="${idx.index}">${mid}</a><br>
 </c:forEach>
 </body>
 </html>

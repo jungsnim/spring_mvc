@@ -1,20 +1,30 @@
 package com.websol.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
 import com.websol.notice.model.School;
 import com.websol.notice.model.Stud;
 import com.websol.notice.model.StudList;
+import com.websol.notice.model.UserInfo;
 
 @Component
 public class VirtualDB 
 {
 	private School school;
-	
+	Map<String,UserInfo> userList = new HashMap<>();
 	public VirtualDB() {
+		
+		userList.put("aaa", new UserInfo("aaa", "aaa", "정성철", 32, "010-7193-8442"));
+		userList.put("bbb", new UserInfo("bbb", "bbb", "정성철", 32, "010-7193-8442"));
+		userList.put("ccc", new UserInfo("ccc", "ccc", "정성철", 32, "010-7193-8442"));
+		userList.put("ddd", new UserInfo("ddd", "ddd", "정성철", 32, "010-7193-8442"));
+		userList.put("eee", new UserInfo("eee", "eee", "정성철", 32, "010-7193-8442"));
+		
 		
 		school = new School();
 		List<StudList> bans = new ArrayList<StudList>();
@@ -37,6 +47,14 @@ public class VirtualDB
 		ban3St.add(new Stud("송재경",44,77,33));
 		bans.add(new StudList(3,ban3St));
 		school.setBanList(bans);
+	}
+	public UserInfo getUserInfo(String id)
+	{
+		if(userList.containsKey(id))
+		{
+			return userList.get(id);
+		}
+		return null;
 	}
 	public List<String> getBanNames()
 	{

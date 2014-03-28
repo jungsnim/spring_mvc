@@ -30,8 +30,39 @@
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 	 
+	<!--  스프링 validator처리를 위해 필효한 빈등록 -->
 	<beans:bean id="messageSource" class = "org.springframework.context.support.ResourceBundleMessageSource">
 		<beans:property name="useCodeAsDefaultMessage" value="true"/>
 	</beans:bean>
 	
+	<interceptors>
+	<!-- 인터셉터에서 처리할 bean을 참조한다. -->
+		<beans:ref bean="eventExpireChk"/>
+	</interceptors>
+	<!-- <annotation-driven /> 에서 자동으로 생성하기 때문에 중복 선언하면 안된다.
+	<beans:bean id="eventExpireChk" class="com.websol.service.EventExpireChk"/>
+	<beans:bean id="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" >
+		<beans:property name="alwaysUseFullPath" value="true"/>
+		<beans:property name="order" value="0"/>
+		<beans:property name="interceptors">
+			<beans:list>
+				<beans:ref bean="eventExpireChk"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	 -->
+	
+	<!-- 익셉션 처리 예전에 web.xml에서 에러페이지 지정과 매우 흡사하다. -->
+	<beans:bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<beans:property name="exceptionMappings">
+			<beans:props>
+				<beans:prop key="java.lang.ArithmeticException">
+					excep/mathExcep
+				</beans:prop>
+				<beans:prop key="java.lang.Exception">
+					excep/allexcep
+				</beans:prop>
+			</beans:props>
+		</beans:property>
+	</beans:bean>
 </beans:beans>

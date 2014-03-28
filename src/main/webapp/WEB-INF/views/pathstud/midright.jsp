@@ -8,8 +8,7 @@
 <title>미드라이트</title>
 </head>
 <body>
-<c:forEach items="${studs}" var="st" varStatus="idx">
-	<a href="${idx.index}">${st}</a><br>
-</c:forEach>
+디폴트 페이지 
+
 </body>
 </html>

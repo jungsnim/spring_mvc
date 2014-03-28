@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,8 @@
 <title>탑임</title>
 </head>
 <body>
-<p>성철 초등학교</p>
+<c:forEach items="${topMenu}" var="to" varStatus="idx">
+	<a href ="../${idx.index}/0">${to}</a>
+</c:forEach>
 </body>
 </html>

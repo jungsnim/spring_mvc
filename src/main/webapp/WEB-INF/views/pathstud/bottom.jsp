@@ -7,6 +7,6 @@
 <title>바텀</title>
 </head>
 <body>
-${stinfo}
+나는 바텀
 </body>
 </html>

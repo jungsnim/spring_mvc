@@ -59,10 +59,22 @@
 <br>
 <br>
 <br>
-<a href = "pathstud/0/0">pathstud/template</a> <br>
+
 <a href = "validate/login">validate/login</a> <br>
 
 <a href = "init/form?from=2014-03-27">initbinder</a> <br>
+
+<a href = "pathstud/loginform">pathstud/loginform</a> <br>
+
+<a href = "interceptor/login">interceptor/login</a> <br>
+
+<a href = "excep/container">excep/container</a> <br>
+<a href = "excep/container?id=AAA">excep/container?id=AAA</a> <br>
+
+<a href = "excep/allcontainer">excep/allcontainer</a> <br>
+<a href = "excep/allcontainer?id=Aaa&jum=5">excep/allcontainer?id=Aaa&jum=5</a> <br>
+<a href = "excep/allcontainer?id=1234&jum=0">excep/allcontainer?id=1234&jum=0</a> <br>
+<a href = "excep/allcontainer?id=1234&jum=2">excep/allcontainer?id=1234&jum=2</a> <br>
 
 </body>
 </html>
