@@ -72,9 +72,13 @@
 <a href = "excep/container?id=AAA">excep/container?id=AAA</a> <br>
 
 <a href = "excep/allcontainer">excep/allcontainer</a> <br>
-<a href = "excep/allcontainer?id=Aaa&jum=5">excep/allcontainer?id=Aaa&jum=5</a> <br>
+<!-- <a href = "excep/allcontainer?id=Aaa&jum=5">excep/allcontainer?id=Aaa&jum=5</a> <br>
 <a href = "excep/allcontainer?id=1234&jum=0">excep/allcontainer?id=1234&jum=0</a> <br>
 <a href = "excep/allcontainer?id=1234&jum=2">excep/allcontainer?id=1234&jum=2</a> <br>
+ -->
+
+<a href = "mvc/0/0/list">mvc</a> <br>
+<a href = "board/list">board</a> <br>
 
 </body>
 </html>

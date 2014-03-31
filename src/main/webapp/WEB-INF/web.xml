@@ -8,6 +8,12 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
+
+	<!-- mybatis 설정내용들을 외부 파일에서 가져온다 -->
+	<context-param>
+		<param-name>contextConfig</param-name>
+		<param-value>classpath:resources/contextConfig.xml</param-value>
+	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
