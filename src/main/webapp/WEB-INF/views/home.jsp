@@ -78,7 +78,8 @@
  -->
 
 <a href = "mvc/0/0/list">mvc</a> <br>
-<a href = "board/list">board</a> <br>
+<a href = "board/list">board/list</a> <br>
+<a href = "board/detail">board/detail</a> <br>
 
 </body>
 </html>
