@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+	id = sqlSessionTemplate 에서 접근할 이름
+	resultType= 결과로 사용할 bean의 형태
+	bean=alias로 지정된 별칭을 받아온다.
+		 이렇게 사용하기 위해서는 contextConfig.xml의
+		 sqlSessionFactoryBean에서 typeAliasedPackage에 
+		 지정한 package안에 Bean이 있어야만 접근가능하다.
+		 만일 지정하지 않은 경로일 경우 Bean의 전체 주소를 넣으면 된다. 
+ -->
+<mapper namespace="mapper">
+
+	<!--include 시킬 동적 쿼리문  -->
+	<sql id="whereSql">
+		<where>
+			1=1
+			<if test="cnt != null">
+				and cnt >= #{cnt}
+			</if>
+			
+			<if test="pname != null">
+				and pname like '%'||#{pname}||'%'
+			</if>
+		</where>
+	</sql>
+	<sql id="column">
+		values(#{item.id},#{item.pname},#{item.title},#{item.cnt})
+	</sql>
+	<select id="selectList" resultType="bean" parameterType="bean">
+		select * from notice 
+		<include refid="whereSql"/>
+		order by gid desc,seq
+	</select>
+	
+	<select id="selectDetail" resultType="bean" parameterType="Integer">
+		select * from notice where id = #{id}
+	</select>
+	
+	<insert id="insertOne" parameterType="bean">
+		insert into notice (id,pname,title,cnt) 
+		<include refid="column"/>
+	</insert>
+	
+	<insert id="insertList" parameterType="java.util.List">
+		insert all
+		<foreach collection="list" item="item">
+			 into notice (id,pname,title,cnt) 
+			 <include refid="column"/>
+		</foreach>
+		select * from dual
+	</insert>
+	
+	<update id="update" parameterType="Integer">
+	<![CDATA[	update notice set cnt=cnt+10 where id < #{id} ]]>
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		<!-- preparedstatement 방식이 아닌 문장형태로 받을 경우
+		${} 형태로 처리 -->
+		delete from notice where pname = #{asdf}
+	</delete>
+	
+	
+    <!-- <sql id="first">
+    	(select * from menu order by gid desc,seq)
+    </sql> 
+    <sql id="second">
+    	(select rownum rnum, id, gid, seq,ref,reg_date,
+        cnt, pname, pw, title, content, upfile from <include refid="first"/>)
+    </sql>         
+    <select id="testSelect">
+    	select * from
+        <include refid="second"/>
+        <where>
+        	<![CDATA[rnum>= start_row and rnum <= end_row]]>
+        </where>
+    </select>        --> 
+</mapper>
