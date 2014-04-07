@@ -36,7 +36,6 @@ function sendRequest(url,params,callback,method)
 	if(httpMethod == "Get" && httpParams != null){
 		httpUrl += "?" + httpParams;
 	}
-		
 	httpRequest.onreadystatechange=callback;
 	
 	httpRequest.open(httpMethod,httpUrl,true);
