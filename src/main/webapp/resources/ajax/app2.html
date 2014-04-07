@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="httpRequest.js"></script>
+<script type="text/javascript">
+function toServer(){
+	var params = "name="+encodeURIComponent(document.frm.name.value);
+	alert(params);
+	sendRequest("simple2.jsp",params,fromServer,"Post");
+}
+function fromServer(){
+	if(httpRequest.readyState == 4){
+		if(httpRequest.status == 200){
+			var msg = httpRequest.responseText;
+			
+			msg = msg.replace(/\s/g,"");
+			alert(msg);	
+			if(msg == "true"){
+				document.frm.submit();
+			}
+			else{
+				alert("아이디에러");
+			}
+				
+		}else{
+			alert("실패:"+ httpRequest.status)
+		}
+	}
+}
+</script>
+</head>
+<body>
+<form action="loginsuc.jsp" name="frm">
+	<input type="text" name="name"/>
+	<input type="button" value="입력" onclick="toServer()"/>
+</form>
+</body>
+</html>

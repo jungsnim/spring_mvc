@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+var httpRequest = null;
+function getXMLHttpRequest()
+{
+	if(window.ActiveXObject){
+		try{
+			return new ActiveXObject("Msxml12.XMLHTTP");
+		}catch(e){
+			try{
+				return new ActiveXObject("Microsoft.XMLHTTP");
+			}catch(e1){
+				return null;
+			}
+		}
+	}
+	else if(window.XMLHttpRequest){
+		return new XMLHttpRequest();
+	}else{
+		return null;	
+	}
+}
+function load()
+{
+	httpRequest = getXMLHttpRequest();
+	httpRequest.onreadystatechange=viewMsg;
+	httpRequest.open("Get","simple.jsp",true);
+	alert("어서와");
+	httpRequest.send(null);
+	
+}
+function viewMsg(){
+	if(httpRequest.readyState == 4){
+		if(httpRequest.status == 200){
+			alert(httpRequest.responseText);	
+		}else{
+			alert("실패:"+ httpRequest.status)
+		}
+	}
+	
+}
+</script>
+<title>ajax테스트</title>
+</head>
+<body>
+ajax Hello
+
+<input type="button" value="simple" onclick="load()">
+</body>
+</html>

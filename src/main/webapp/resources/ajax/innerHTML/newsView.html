@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../httpRequest.js"></script>
+<script type="text/javascript">
+var num = 0;
+var limit = 2;
+function load()
+{
+	var params = "no="+num;
+	sendRequest("sportsNews.jsp", params, loaded, "Get")
+}
+function loaded(){
+	if(httpRequest.readyState == 4){
+		if(httpRequest.status == 200){
+			var newsList = document.getElementById("newsList");
+			newsList.innerHTML=httpRequest.responseText;
+		}else{
+			alert("실패:"+ httpRequest.status)
+		}
+	}
+}
+window.onload = function(){
+	rolling();
+}
+function back()
+{
+	num--;
+	if(num < 0)
+		num = limit;
+	load();
+}
+function next()
+{
+	num++;
+	if(num > limit)
+		num = 0;
+	load();
+}
+function rolling()
+{
+	num++;
+	if(num > limit)
+		num = 0;
+	load();
+	setTimeout("rolling()",1000);
+}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<div id="newsList">
+</div>
+<input type="button" value="<" onclick="back()"/>
+<input type="button" value=">" onclick="next()"/>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../httpRequest.js"></script>
+<script type="text/javascript">
+
+function reg()
+{
+	sendRequest("temp.jsp", null, loaded, "Get")
+}
+function loaded(){
+	if(httpRequest.readyState == 4){
+		if(httpRequest.status == 200){
+			
+			
+			var str = httpRequest.responseText;
+			var strArr = str.split(",");
+			
+			var intArr = new Array(strArr.length);
+			
+			for(var i=0; i < intArr.length;i++){
+				intArr[i]=parseInt(strArr[i]);
+			}
+			var max = intArr[0];
+			for(var i=0; i < intArr.length;i++){
+				if(max < intArr[i])
+					max = intArr[i];
+			}
+			
+			var newsList = document.getElementById("newsList");
+			
+			
+			newsList.innerHTML=max;
+		}else{
+			alert("실패:"+ httpRequest.status)
+		}
+	}
+}
+window.onload=function(){
+	reg();
+}
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+최고기온:<div id="newsList">
+</div>
+</body>
+</html>

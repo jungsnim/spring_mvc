@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function view()
+{
+	var pp = document.getElementById("pp");
+	alert(pp.innerHTML);
+	pp.innerHTML="포기하면 편해";
+}
+</script>
+</head>
+<body>
+
+<p id="pp">
+선생님<br>
+CSS가 하고 싶어요!!
+</p>
+왼손은 거들뿐
+<input type="button" value="보기" onclick="view()"/>
+</body>
+</html>
