@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+
+div{
+	background: #6699ff;
+	height:100px;
+	width:100px;
+	position: relative;
+}
+</style>
+</head>
+<body>
+<div></div>
+<br>
+<a href="#">animate</a> 
+<script type="text/javascript">
+	$('a').click(function(){
+		$('div').animate({opacity:"0.5",left:"+=400"},2000);
+		$('div').animate({opacity:"0.5",top:"+=100"},1000);
+		$('div').slideUp();
+	});
+</script>
+</body>
+</html>

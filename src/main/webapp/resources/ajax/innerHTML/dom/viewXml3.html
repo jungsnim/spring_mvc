@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../../httpRequest.js"></script>
+<script type="text/javascript">
+	var no;
+	var cnt;
+	var start;
+	window.onload = function() {
+
+		setCnt();
+		goNick(1);
+
+		mainMenu();
+	}
+	function mainMenu() {
+		var main = document.getElementById('main');
+		var html = '';
+		for (var i = start; i <= cnt; i++) {
+			html += "<img src='../../../up/btn" + i
+					+ ".jpg' width=50 height=75 onclick='goNick(" + i + ")'>";
+		}
+		main.innerHTML = html;
+	}
+
+	function setCnt() {
+		sendRequest("data.jsp", null, setedCnt, "GET");
+	}
+
+	function goNick(num) {
+		no = num;
+		sendRequest("data.jsp", null, loadedNickName, "GET");
+	}
+
+	function loadNickName() {
+		sendRequest("data.jsp", null, loadedNickName, "GET");
+	}
+
+	function loadedNickName() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var res = eval("(" + httpRequest.responseText + ")");
+				if (res.code == 'ok') {
+					var dd = res.data.sk;
+					var msg = "인원수 :" + dd.length + '<br>';
+
+					for (var i = 0; i < dd.length; i++) {
+
+						if (dd[i].id == no) {
+							var nick = dd[i].name;
+							var real = dd[i].jum;
+
+							real = encodeURIComponent(real);
+							msg += "<a href='"+real+"'>" + nick + "</a><br>";
+							//log(msg, 'nick');
+
+						}
+						//alert(dd[i].id+":"+dd[i].name+":"+dd[i].jum); 
+					}
+
+					var divNick = document.getElementById('nick');
+					divNick.innerHTML = msg;
+
+				}
+
+			} else {
+				alert("실패:" + httpRequest.status);
+			}
+		}
+	}
+
+	function setedCnt() {
+		if (httpRequest.readyState == 4) {
+			if (httpRequest.status == 200) {
+				var res = eval("(" + httpRequest.responseText + ")");
+				if (res.code == 'ok') {
+					var dd = res.data.sk;
+					var msg = "인원수 :" + dd.length + '<br>';
+
+					cnt = dd[0].id;
+					no = cnt;
+					start = cnt;
+
+					for (var i = 0; i < dd.length; i++) {
+
+						if (dd[i].id > cnt) {
+							cnt = dd[i].id;
+
+						}
+						//alert(dd[i].id+":"+dd[i].name+":"+dd[i].jum); 
+					}
+
+				}
+
+			} else {
+				alert("실패:" + httpRequest.status);
+			}
+		}
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="main"></div>
+	<div id="nick"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+div{
+	width: 60px;
+	height: 60px;
+	background-color: #656;
+	padding: 20px;
+}
+a{
+	display: block;
+	width: 60px;
+	height: 60px;
+	background: #0F0;
+	border: #000 thin solid;
+}
+
+</style>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+
+	
+<title>Insert title here</title>
+</head>
+<body>
+	<div id = "ming">
+		<a href="#">밍또 백만볼트</a>
+	</div>
+	
+	<script type="text/javascript">
+	$('#ming').click(
+			function(){
+				//alert('밍또 메롱');
+				$(this).css('background', '#FF0');
+			}
+		);
+	$('a').click(
+			function(e){
+				//alert('밍또 메롱');
+				$(this).css('background', '#FF0');
+				e.stopPropagation();//이벤트가 부모에게 전파되지 않는다.
+			}
+		);
+	
+	</script>
+	
+	
+</body>
+</html>

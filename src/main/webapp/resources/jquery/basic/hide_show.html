@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+
+<title>Insert title here</title>
+</head>
+<body>
+<img src="../../up/jun.jpg" width="120" height="150"/><br>
+hideshow<br>
+<button id= "hide">hide</button>
+<button id= "show">show</button>
+<button id= "toggle">toggle</button>
+<br>
+fadeinout
+<br>
+<button id= "fadeIn">fadeIn</button>
+<button id= "fadeOut">fadeOut</button>
+<br>
+opacity
+<br>
+<button id= "opa" title= "0">0</button>
+<button id= "opa" title= "0.3">0.3</button>
+<button id= "opa" title= "0.6">0.6</button>
+<button id= "opa" title= "1">1</button>
+
+slide<br>
+<button id= "up">up</button>
+<button id= "down">down</button>
+<button id= "slideToggle">toggle</button>
+<br>
+
+<script type="text/javascript">
+$('#hide').click(function(){
+	$('img').hide(2000,function(){
+		alert('현재상태:' +$(this).css('display'));
+	});
+});
+$('#show').click(function(){
+	$('img').show(1000,function(){
+		alert('현재상태:' +$(this).css('display'));
+	});
+});
+$('#toggle').click(function(){
+	$('img').toggle(1000,function(){
+		alert('현재상태:' +$(this).css('display'));
+	});
+});
+/////////////////////////////////////////////////////////////////
+
+$('body').append('<p></p>');
+$('button#fadeOut').click(function(){
+	$('img').fadeOut(1000,function(){
+		$('p').text('현재상태:' +$(this).css('display'));
+	});
+});
+$('button#fadeIn').click(function(){
+	$('img').fadeIn(1000,function(){
+		$('p').text('현재상태:' +$(this).css('display'));
+	});
+});
+
+//////////////////////////////////////////////////////////////////////
+$('button#opa').click(function(){
+	var opacity = $(this).attr('title');
+	$('img').fadeTo('slow',opacity,function(){
+		$('p').append('현재상태:' +$(this).css('display')+"<br>");
+		$('p').append('opacity:' +$(this).css('opacity')+"<br>");
+	});
+});
+///////////////////////////////////////////////////////////
+$('#up').click(function(){
+	$('img').slideUp(2000,function(){
+		alert('현재상태:' +$(this).css('display'));
+	});
+});
+$('#down').click(function(){
+	$('img').slideDown(1000,function(){
+		alert('현재상태:' +$(this).css('display'));
+	});
+});
+$('#slideToggle').click(function(){
+	$('img').slideToggle(1000,function(){
+		alert('현재상태:' +$(this).css('display'));
+	});
+});
+</script>
+<br>
+<div id = "menu" style=" background-color:#FFA;">
+	<ul>
+		<li>
+			<a href="#" class="hahaButton">하하</a>
+			<div id ="hahaDiv" style=" background-color:#F0A;">
+				<ul>
+					<li><a href="#">하하1</a></li>
+					<li><a href="#">하하2</a></li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<a href="#" class="hahaButton">호호</a>
+			<div id ="hahaDiv" style=" background-color:#F0A;">
+				<ul>
+					<li><a href="#">하하1</a></li>
+					<li><a href="#">하하2</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>
+<script type="text/javascript">
+	$('.hahaButton').click(function(e){
+		e.stopPropagation();
+		$(this).slideToggle(100);
+	});
+</script>
+
+</body>
+</html>

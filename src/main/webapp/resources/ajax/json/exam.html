@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../httpRequest.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		sendRequest('data.jsp', null, examView, 'Get');
+	}
+	
+	function examView(){
+		if(httpRequest.readyState == 4){
+			if(httpRequest.status == 200){
+				
+				var res = eval("("+httpRequest.responseText+")");
+				if(res.code =='ok'){
+					var dd = res.data.sk;
+					for(var i=0; i < dd.length;i++){
+						alert(dd[i].id+":"+dd[i].name+":"+dd[i].jum);
+					}
+				}
+				
+				
+			}else{
+				alert("실패:"+ httpRequest.status)
+			}
+		}
+	}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

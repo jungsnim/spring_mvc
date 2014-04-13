@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+{ 
+	code:'ok',
+	data:{
+		sk:[{
+				cate:0,
+				id:0,
+				name:'황선국', 
+				jum:70 
+			}, 
+			{
+				id:1,
+				name:'황선찌개', 
+				jum:700 
+			}, 
+			{
+				id:1,
+				name:'황선탕', 
+				jum:7000 
+			}, 
+			{
+				id:2,
+				name:'정무성', 
+				jum:80 
+			},
+			{
+				id:3, 
+				name:'밍또', 
+				jum:90 
+			}
+		 ]} 
+}

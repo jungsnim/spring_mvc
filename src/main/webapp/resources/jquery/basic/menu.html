@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+.main{
+	width:200px;
+	height:20px;
+	background: #FF0;
+}
+.sub{
+	width:200px;
+	height:70px;
+	background: #0F0;
+	margin-left: 20px;
+	display: none;
+}
+</style>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="home" class="main">
+		home
+	</div>
+	
+	<div id="home_sub" class="sub">
+		인사말<br>
+		인사개<br>
+		인사돌<br>
+	</div>
+	
+	<div id="center" class="main">
+		center
+	</div>
+	
+	<div id="center_sub" class="sub">
+		공지사항<br>
+		제기사항<br>
+		인사돌<br>
+	</div>
+</body>
+
+<script type="text/javascript">
+$('div.main').click(function(){
+	var target = '#'+$(this).attr('id')+"_sub";
+	$(target).slideToggle(100);
+});
+</script>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../httpRequest.js"></script>
+<script type="text/javascript">
+var checkFirst = false;
+//var loopSendKey=false;
+var lastKey="";
+function startSuggest()
+{
+	if(!checkFirst){
+		setTimeout("sendKeyword()", 500);
+		//loopSendKey=true;
+	}
+	checkFirst = true;	
+}
+function sendKeyword()
+{
+	if(!checkFirst)
+		return ;
+	var key = document.sch.key.value;
+	if(key == ''){
+		lastKey="";
+		hide('suggest');
+	}else if(key != lastKey){
+		show('suggest');
+		var params = "key="+encodeURIComponent(key);
+		sendRequest("suggest.jsp", params, divSuggestList, "Post");
+		lastKey = key;
+	}
+	/* else{
+		hide('suggest');
+	} */
+	setTimeout("sendKeyword()", 500);
+}
+function hide(eleId){
+	var element = document.getElementById(eleId);
+	if(element)
+		element.style.display = 'none';
+}
+function show(eleId){
+	var element = document.getElementById(eleId);
+	if(element)
+		element.style.display = '';
+}
+function divSuggestList()
+{
+	if(httpRequest.readyState == 4){
+		if(httpRequest.status == 200){
+			var suggestList = document.getElementById("suggestList");
+			var res = httpRequest.responseText;
+			
+			var arr = res.split(",");
+			var html="";
+			for(var i =0; i<arr.length;i++){
+				html+="<a href=\"javascript:select('"+arr[i]+"')\">"+arr[i]+"</a>"+"<br>";
+			}
+			suggestList.innerHTML = html;
+		}else{
+			alert("실패:"+ httpRequest.status)
+		}
+	}
+}
+function select(str){
+	document.sch.key.value = str;
+	checkFirst = false;
+	//loopSendKey=false;
+	hide('suggest');
+}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<form name="sch">
+	<input type="text" name="key" id="key" onkeydown="startSuggest()"/>
+	<div id="suggest" style="display:; position: absolute; left: 0ex; top: 30px;">
+		<div id="suggestList"></div>
+	</div>
+</form>
+</body>
+</html>

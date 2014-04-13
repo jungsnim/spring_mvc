@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../../httpRequest.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+	var root=document.documentElement;
+	log("root 태그:"+root.tagName,'console');
+	
+	var body = document.getElementsByTagName("body");
+	log("body 태그:"+body.item(0).tagName,'console');
+	
+	var span = document.getElementsByTagName("span");
+	log("span 태그 수:"+span.length,'console');
+	for(var i = 0; i < span.length; i ++){
+		var spanE = span.item(i);
+		log(i+"-span id:"+spanE.getAttribute("mid"),'console');
+	}
+	span.item(1).setAttribute("mid","작두");
+	for(var i = 0; i < span.length; i ++){
+		var spanE = span.item(i);
+		log(i+"-span id:"+spanE.getAttribute("mid"),'console');
+	}
+	
+	var console = document.getElementById("console");
+	log("console 태그:"+console.tagName,'console');
+	
+	var bodyLastChild = body.item(0).lastChild;
+	log("bodyLastChild 태그:"+bodyLastChild,'console');
+}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<span mid="성철아" id="a">a</span>
+		<p>
+			p1성철 아이스크림
+			<span mid="사다리 좀" id = "b">b</span>
+		</p>
+	<div>
+		<p>p2</p>
+		<span mid="타면안대겟니?" id="c">c</span>
+	</div>
+	<div id="console" style="border: solid 1px #000;"></div>
+</body>
+</html>

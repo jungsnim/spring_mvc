@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+
+div{
+overflow: scroll;   /* 사이즈가 넘어가면 숨김 */
+/* width: 250; */
+}
+</style>
+</head>
+<body>
+<div>
+<img alt="../../up/btn0.jpg"  src="../../up/jun.jpg" width="250px" >
+</div>
+
+<button id="up">slideUp</button>
+<button id="down">slideDown</button>
+<button class="zoom" id="0.5">1/2</button>
+<button class="zoom" id="1">1:1</button>
+<button class="zoom" id="2">2배</button>
+<script type="text/javascript">
+var wwStr;
+var ww;
+var oriWW;
+var limit = 500;
+window.onload = function(){
+   wwStr= $('img').css('width');
+   //alert(wwStr);
+   ww = wwStr.substring(0,wwStr.indexOf('px'));
+   oriWW=ww;
+   $('div').css('width',wwStr)
+}
+
+$('#up').click(function(){
+   $('div').animate({width:"0px"},300);
+});
+
+$('#down').click(function(){
+   $('div').animate({ width: ww},300);
+});
+
+$('.zoom').click(function(){
+   
+   var biyul = $(this).attr('id');
+   
+   
+   if(biyul==1)
+      ww=oriWW;
+   
+   var realWW = ww*biyul; //1:1 1/2 2배
+   //alert(realWW);
+   
+   divSize(realWW);
+});
+
+   function divSize(size)
+   {
+      if(size > limit){
+         
+         }else{
+            $('div').animate({width:size},300);
+         }
+      ww= size;
+      $('img').animate({width:size},300);
+      
+   }
+</script>
+</body>
+</html>

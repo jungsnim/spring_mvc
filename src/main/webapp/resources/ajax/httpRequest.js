@@ -43,3 +43,9 @@ function sendRequest(url,params,callback,method)
 	httpRequest.send((httpMethod=="Post")?httpParams:null);
 	
 }
+function log(msg, console_id)
+{
+   var console = document.getElementById(console_id);
+   if(console != null)
+      console.innerHTML += msg+"<br>";
+}

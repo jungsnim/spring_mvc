@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style type="text/css">
+div{
+width:20px;
+height: 20px;
+overflow: hidden;
+}
+</style>
+
+
+</head>
+<body>
+	<div style="background: #FF0000"></div>
+	<div style="background: #FF5E00"></div>
+	<div style="background: #FFE400"></div>
+	<div style="background: #1DDB16"></div>
+	<div style="background: #0054FF"></div>
+	<div style="background: #030066"></div>
+	<div style="background: #5F00FF"></div>
+	
+	<script type="text/javascript">
+		$('div').hover(
+		function(){
+			$(this).stop().animate({width:"200px"},500);
+		},
+		function(){
+			//$(this).animate({width:"20px"},500);
+			$(this).stop().animate({width:"20px"},500);
+		}
+		);
+	</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+
+var showCal = false;
+var tempDate = new Date();
+var curMonth=tempDate.getMonth();
+function nextMon(){
+	curMonth++;
+	setCal();
+}
+function prevMon(){
+	curMonth--;
+	setCal();
+}
+function setCal(){
+	
+	var monEle = document.getElementById("mon");
+	monEle.innerText=(curMonth+1);
+	var caleander = new Date();
+	caleander.setMonth(curMonth);
+	caleander.setDate(1);
+	var day = caleander.getDay();
+	caleander.setDate(1-day);
+	
+	var ele = document.getElementById("calTable");
+	var trArr = ele.getElementsByTagName("tr");
+	for(var i = 0; i <trArr.length;i++){
+		for(var j = 0; j <trArr[i].children.length;j++){
+			var td = trArr[i].children[j];
+			td.style.backgroundColor = '#fff';
+			if(i < 2 && caleander.getDate()>15){
+				td.style.backgroundColor = '#aaa';
+			}
+
+			if(i > 2 && caleander.getDate()<15){
+				td.style.backgroundColor = '#aaa';
+			}
+			td.innerText=caleander.getDate();
+			caleander.setDate(caleander.getDate()+1);
+		}
+	}
+}
+function toggleCal()
+{
+	showCal = !showCal; 
+	var ele = document.getElementById("calMain");
+	ele.style.display=showCal?"":"none";
+	setCal();
+}
+</script>
+<title>달력 숙제</title>
+</head>
+<body>
+	<input type="button" value="달력아나와라" onclick="toggleCal()"/> 
+	<div id="calMain" style="display: none;">
+		<table border="1">
+			<tr>
+				<th id="mon" colspan="7" width="350"></th> 
+			</tr>
+			<tr>
+				<th width="50">일</th>
+				<th width="50">월</th>
+				<th width="50">화</th>
+				<th width="50">수</th>
+				<th width="50">목</th>
+				<th width="50">금</th>
+				<th width="50">토</th>
+			</tr>
+		</table>
+		<table border="1" id="calTable">
+			<tr>
+				<td width="50"></td>
+				<td width="50"></td>
+				<td width="50"></td>
+				<td width="50"></td>
+				<td width="50"></td>
+				<td width="50"></td>
+				<td width="50"></td>
+			</tr>
+			<tr>
+				<td ></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+			<tr>
+				<td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+			</tr>
+		</table>
+		<input type="button" value="<" onclick="prevMon()"/> 
+		<input type="button" value=">" onclick="nextMon()"/> 
+	</div>
+</body>
+</html>

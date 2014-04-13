@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+.main{
+	width:200px;
+	height:20px;
+	background: #FF0;
+}
+.sub{
+	width:200px;
+	height:70px;
+	background: #0F0;
+	margin-left: 20px;
+	display: none;
+}
+</style>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="menu1" class="main">
+		menu1
+	</div>
+	<div id="menu2" class="main">
+		menu2
+	</div>
+	
+	<div id="menu3" class="main">
+		menu3
+	</div>
+	<div id="mainSub" class="sub"></div>
+</body>
+<script type="text/javascript">
+var curMenu='';
+var menuData={
+	menu1:['로그인','회원가입','탈퇴'],
+	menu2:['회사소개','회사말닭','회사양돈'],
+	menu3:['직원소개','정리해고','부도']
+}
+$('div.main').click(function(){
+	
+	var id = $(this).attr('id');
+	var html='';
+	for(var mStr in menuData){
+		
+		if(id == mStr){
+			for(var i =0; i<menuData[mStr].length;i++){
+				html+=menuData[mStr][i]+"<br>";
+			}
+		}
+	}
+	
+	$('#mainSub').html(html);
+	if(curMenu != id){
+		$('#mainSub').slideDown(100);
+		curMenu = id;
+	}else{
+		$('#mainSub').slideToggle(100);
+	}
+	
+});
+
+</script>
+</html>

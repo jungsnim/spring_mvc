@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons>
+	<person no="1">
+		<real>ming1</real>
+		<nick>최대원1</nick>
+	</person>
+	<person no="1">
+		<real>hwang1</real>
+		<nick>황태1</nick>
+	</person>
+	<person no="1">
+		<real>mee1</real>
+		<nick>사진찍는여자1</nick>
+	</person>
+	
+	<person no="2">
+		<real>ming2</real>
+		<nick>최대원2</nick>
+	</person>
+	<person no="2">
+		<real>hwang2</real>
+		<nick>황태2</nick>
+	</person>
+	<person no="2">
+		<real>mee2</real>
+		<nick>사진찍는여자2</nick>
+	</person>
+	
+	
+	<person no="3">
+		<real>ming3</real>
+		<nick>최대원3</nick>
+	</person>
+	<person no="3">
+		<real>hwang3</real>
+		<nick>황태3</nick>
+	</person>
+	<person no="3">
+		<real>mee3</real>
+		<nick>사진찍는여자3</nick>
+	</person>
+	
+	
+</persons>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+   var cnt = 0;
+   function addItem() {
+      
+      cnt++;
+      
+      var newItem = document.createElement("div"); //div를 만들어줌
+      newItem.setAttribute("id", "item_" + cnt);
+      
+      var content = document.getElementsByName('content').item(0);
+      
+      /* var html = content.value+'[' + cnt + ']'+
+      '<input type="button" value="삭제" onclick="removeItem('+cnt+')">'; */
+      
+      var html = '<table border="1" cellpadding="1" cellspacing="1"><tr><td width=50>'+
+      cnt+'</td><td width=300>'+content.value+'</td><td width=100>'+
+      '<input type="button" value="삭제" onclick="removeItem('+cnt+
+      ')"></td></tr></table>'
+      
+      newItem.innerHTML = html;
+      var itemList = document.getElementById('itemList');
+      itemList.appendChild(newItem);
+      
+      content.value='';
+      content.focus();
+
+   }
+   function removeItem(delCnt) {
+      var item = document.getElementById("item_" + delCnt);
+      if (item != null) {
+         item.parentNode.removeChild(item);   //부모 한테가서 날죽여 달라고 그러면 내가 죽음
+      }
+   }
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+   <table>
+   
+      <tr>
+         <td>
+            <input type="text" name="content"> 
+            <input type="button" value="추가" onclick="addItem()">
+         </td>
+      </tr>
+
+      <tr>
+         <td>
+            <table border="1" cellpadding="1" cellspacing="1">
+            <tr>
+               <td width=50>번호</td>
+               <td width=300>내용</td>
+               <td width=100>버튼</td>
+            </tr>
+            </table>
+         </td>
+      </tr>
+
+      <tr>
+         <td>
+            <div id="itemList"></div>
+         </td>
+      </tr>
+      
+   </table>
+</body>
+</html>
+

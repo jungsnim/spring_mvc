@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript" src="../httpRequest.js"></script>
+<script type="text/javascript" src="member.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var mem = new Member("밍또", "aaa","111");
+		mem.setBirth("1983-04-11");
+		log(mem.getParty(), "console");
+	}
+</script>
+<div id="console"></div>
+</body>
+</html>

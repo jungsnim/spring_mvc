@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../../httpRequest.js"></script>
+<script type="text/javascript">
+var no = 1;
+var cnt =3;
+window.onload = function(){
+	
+	goNick(1);
+	mainMenu();
+	alert(document.getElementsByTagName("body").item(0).childNodes.item(1).getAttribute('id'));
+}
+function mainMenu(){
+	var main = document.getElementById('main');
+	var html='';
+	for(var i =1; i <= cnt; i ++){
+		html+="<img src='../../../up/jun.jpg' width='50px' height='75' onclick='goNick("+i+")'/>"
+	}
+	main.innerHTML=html;
+}
+function loadedNickName(){
+	if(httpRequest.readyState == 4){
+		if(httpRequest.status == 200){
+			
+			var xmlDoc = httpRequest.responseXML;
+			
+			var personList = xmlDoc.getElementsByTagName('person'+no);	
+			var msg = "인원수:"+personList.length+"<br>";
+			//log(msg, 'nick');
+			
+			
+			for(var i =0;i<personList.length;i++){
+				var person = personList[i];
+				var real = person.getElementsByTagName('real').item(0).firstChild.nodeValue;
+				var nick = person.getElementsByTagName('nick').item(0).firstChild.nodeValue;
+				
+				real = encodeURIComponent(real);
+				msg += "<a id=\""+real+"\" href=\"javascript:chagne('"+real+"');\">"+nick+"</a><br>";
+				//log(msg, 'nick');
+			}
+			var divNick = document.getElementById("nick");
+			divNick.innerHTML = msg;
+		}else{
+			alert("실패:"+ httpRequest.status)
+		}
+	}
+}
+function chagne(id){
+	var ele = document.getElementById(id);
+	ele.innerText+="꺼져";
+}
+
+function goNick(num){
+	no = num;
+	sendRequest("nickName.xml", null, loadedNickName, "Get");
+}
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="main">
+	</div>
+	<div id="nick"></div>
+</body>
+</html>

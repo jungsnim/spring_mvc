@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style type="text/css">
+div{
+	margin-bottom: 50px;
+	height: 50px;
+	width: 50px;
+	position: relative;
+	
+}
+
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="#" id = "start1">효과시작</a>
+	<a href="#" id = "stop1">효과끝</a>
+	<div id = "box1" style="background: #F00"></div>
+	<br>
+	<a href="#" id = "start2">효과시작</a>
+	<a href="#" id = "stop2">효과끝</a>
+	<div id = "box2" style="background: #000"></div>
+	<br>
+	<a href="#" id = "start3">효과시작</a>
+	<a href="#" id = "stop3">효과끝</a>
+	<div id = "box3" style="background: #F0F"></div>
+	<br>
+	<a href="#" id = "start4">효과시작</a>
+	<a href="#" id = "stop4">효과끝</a>
+	<div id = "box4" style="background: #FF0"></div>
+	<br>
+	
+	
+	<script type="text/javascript">
+		$('#start1').click(function(){
+			$('#box1').animate({opacity:'0.1',left:'500'},1000)
+			.animate({opacity:'0,4',top:'10',height:'100',width:'100'},1000)
+			.slideUp(1000)
+			.slideDown(1000)
+			.animate({left:0},1000);
+			return false;
+		});
+		$('#stop1').click(function(){
+			$('#box1').stop(true,true);
+			return false;
+		});
+//////////////////////////////////////////////////////////////////////////////////////////
+		$('#start2').click(function(){
+			$('#box2').animate({opacity:'0.1',left:'500'},1000)
+			.animate({opacity:'0,4',top:'10',height:'100',width:'100'},1000)
+			.slideUp(1000)
+			.slideDown(1000)
+			.animate({left:0},1000);
+			return false;
+		});
+		$('#stop2').click(function(){
+			$('#box2').stop(true,false);
+			return false;
+		});
+//////////////////////////////////////////////////////////////////////////////////////////
+		$('#start3').click(function(){
+			$('#box3').animate({opacity:'0.1',left:'500'},1000)
+			.animate({opacity:'0,4',top:'10',height:'100',width:'100'},1000)
+			.slideUp(1000)
+			.slideDown(1000)
+			.animate({left:0},1000);
+			return false;
+		});
+		$('#stop3').click(function(){
+			$('#box3').stop(false,true);
+			return false;
+		});
+//////////////////////////////////////////////////////////////////////////////////////////
+		$('#start4').click(function(){
+			$('#box4').animate({opacity:'0.1',left:'500'},1000)
+			.animate({opacity:'0,4',top:'10',height:'100',width:'100'},1000)
+			.slideUp(1000)
+			.slideDown(1000)
+			.animate({left:0},1000);
+			return false;
+		});
+		$('#stop4').click(function(){
+			$('#box4').stop(false,false);
+			return false;
+		});
+	</script>
+</body>
+</html>
