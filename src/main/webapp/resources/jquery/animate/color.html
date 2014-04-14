@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.8.23.custom.min.js"></script>
+
+<style type="text/css">
+li{
+	list-style: none;
+	float :left;
+	/* width: 100px;
+	height: 60px; */
+}
+li a{
+	background: green;
+	width: 150px;
+	hegiht: 60px;
+	display: block;
+	text-align: center;
+	padding: 10px 0px 10px;
+	text-decoration: none;
+	font:bold 25px;
+}
+.sub{
+	display: none;
+}
+.sub div{
+	/* background: aqua;
+	text-align: center;
+	width: 100px;
+	height: 30px; */
+	
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+
+<ul>
+	<li>
+		<a id="main" href="#" data-bg="#EF4018">Home</a>
+		<div class="sub" >
+			<div><a id="sub" href="#" data-bg="red">sub</a></div>
+			<div><a id="sub" href="#" data-bg="aqua">sub</a></div>
+			<div><a id="sub" href="#" data-bg="red">sub</a></div>
+		</div>
+	</li>
+	<li><a href="#" data-bg="#EF40FF">Home</a></li>
+	<li><a href="#" data-bg="#EFFF18">Home</a></li>
+	<li><a href="#" data-bg="#aa4018">Home</a></li>
+</ul>
+
+<script type="text/javascript">
+	$("li a").hover(
+		function(){
+			if($(this).attr("id")=="main"){
+				var overColor = $(this).attr("data-bg");
+				$(this).stop().animate({'background-color':overColor,'color':'white'},300);
+				$(".sub").slideDown(300);
+				//$(this).next() 내 다음 노드
+				//$(this).prev() 내 이전 노드
+				//$(this).parent() 내 부모 노드;
+				//var tds = $(this).parent().children(); 부모의 자식들 배열
+			}
+			
+		},
+		function(){
+			if($(this).attr("id")=="main"){
+				$(this).stop().animate({'background-color':'green','color':'black'},300);
+				$(".sub").stop().slideUp(300);
+			}
+		}
+	);
+	$(".sub").hover(
+		function(){
+			$(this).slideDown(300);
+		},
+		function(){
+			$(this).stop().slideUp(300);
+		}
+	);
+	
+</script>
+</body>
+</html>

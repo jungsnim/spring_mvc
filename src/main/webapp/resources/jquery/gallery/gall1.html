@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<style type="text/css">
+body{
+	margin: 20px auto;
+	padding: 0;
+	width:450px;
+	background: #191933;
+}
+
+.thumbs a{
+	float: left; 
+	padding-right: 10px;
+}
+.thumbs img{
+	width:50px;
+	height:70px;
+	border: solid 1px #ccc;
+}
+.thumbs img:hover{
+	border-color: #ee4411;
+}
+#large{
+	clear: both; 
+	width:300px;
+	height:200px;
+	border: solid 1px #ccc;
+	padding: 5px;
+	overflow: hidden;
+}
+#large img{
+	width:300px;
+	height:200px;
+}
+#caption{
+	background: url(../../up/captionbg.png) repeat-y;
+	border: #ccc 1px thin;
+	padding: 10px;
+	position: relative;
+	color: #ffffff;
+	
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="thumbs">
+		<a href="../../up/btn0.jpg"><img src="../../up/btn0.jpg"></a>
+		<em>파란하늘 장ㅁㅇ러ㅏㅣ전지현전지현</em>
+		<a href="../../up/btn1.jpg"><img src="../../up/btn1.jpg"></a>
+		<em>엄마가 섬그늘에 굴따러 가면 압담아러미ㅏㄴㅇ러민아러</em>
+		<a href="../../up/btn2.jpg"><img src="../../up/btn2.jpg"></a>
+		<em>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㅇㄴㄹ</em>
+		<a href="../../up/btn4.jpg"><img src="../../up/btn4.jpg"></a>
+		<em>11111111111111111111111111111111111111</em>
+		<a href="../../up/btn5.jpg"><img src="../../up/btn5.jpg"></a>
+		<em>ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</em>
+		<a href="../../up/btn6.jpg"><img src="../../up/btn6.jpg"></a>
+		<em>ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ</em>
+	</div>	
+	<div id="large">
+		<img src="../../up/btn0.jpg"></img>
+	</div>
+	<script type="text/javascript">
+		$(".thumbs em").hide();
+		$(".thumbs a").hover(function(){
+			$(this).find('img').css("opacity","1");
+		},
+		function(){
+			$(this).find('img').css("opacity","0");
+		});
+		
+		$(".thumbs a").click(function(){
+			$("#caption").remove();
+			var path = $(this).attr("href");
+			$("#large > img").attr("src",path);
+			$("#large > img").css("opacity","0").stop().animate({opacity:1},1000);
+			
+			var msg = $(this).next("em").text();
+			$("#large").append("<div id='caption'></div>");
+			$("#large #caption").text(msg);
+			var pos = $("#large #caption").height()+25;
+			$("#large #caption").animate({top:"-="+pos+"px"},300);
+			return false;
+		});
+	</script>
+</body>
+</html>

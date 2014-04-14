@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.8.23.custom.min.js"></script>
+
+
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<img src="../../up/jun.jpg">
+	</div>
+	<button data-ease="easeOutBounce">easeOutBounce</button>
+	<button data-ease="easeInOutBounce">easeInOutBounce</button>
+	<button data-ease="easeOutBack">easeOutBack</button>
+	<button data-ease="easeOutSine">easeOutSine</button>
+	<script type="text/javascript">
+		$('button').click(
+			function(){
+				var easing = $(this).attr("data-ease");
+				$('div').stop().slideToggle(1000,easing);
+			}
+		);
+	</script>
+</body>
+</html>

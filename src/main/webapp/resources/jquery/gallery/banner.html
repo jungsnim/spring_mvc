@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<style type="text/css">
+body{
+	margin: 20px auto;
+	padding:0;
+	width:300px;
+	background: #1111dd;
+}
+.fadeShow{
+	border:solid 1px #ccc;
+	width:300px;
+	height:200px;
+	background: #666;
+}
+.fadeShow img{
+	position: absolute;
+	width: 300px;
+	height: 200px;
+}
+.fadeShow .active{
+	z-index: 1;
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="fadeShow">
+		<img src="../../up/btn0.jpg" class="active">
+		<img src="../../up/btn5.jpg">
+		<img src="../../up/btn6.jpg">
+	</div>
+	<script type="text/javascript">
+		var showImg,nextImg;
+		function fadeInOut(){
+			showImg = $('.fadeShow img:eq(0)');
+			nextImg = $('.fadeShow img:eq(1)');
+			nextImg.addClass("active");
+			nextImg.css("opacity","0").animate({opacity:1},1000,function(){
+				$(".fadeShow").append(showImg);
+				showImg.removeClass("active");
+			});
+		}
+		var timer = setInterval("fadeInOut()", 1000);
+		$(".fadeShow").hover(function(){
+			clearInterval(timer);
+		},
+		function(){
+			timer = setInterval("fadeInOut()", 3000);
+		});
+	</script>
+</body>
+</html>
