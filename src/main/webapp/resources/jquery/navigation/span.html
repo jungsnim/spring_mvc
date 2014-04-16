@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.8.23.custom.min.js"></script>
+<style type="text/css">
+	#container{
+		width: 210px;
+		height: 100px;
+		left: 0px;
+		top: 0px;
+		position: relative;
+	}
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	div #container{
+		width:210px;
+		height:100px;
+		left:0px;
+		top:0px;
+		position:relative;
+	}
+	img{
+		width:50px;
+		height:70px;
+	}
+	#home{
+		width:50px;
+		height:70px;
+		background: #ccFF00;
+		left:0px;
+		top:0px;
+		position:absolute;
+		z-index: 2;
+	}
+	ul{
+		width:150px;
+		height: 70px;
+		list-style: none;
+		left: -210px;
+		top:0px;
+		position: absolute;
+		z-index: 1;
+	}
+	li{
+		width:50px;
+		height:70px;
+		float:left;
+		opacity:0.5;
+	}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="container">
+		<div id="home">home</div>
+		<ul id="menu">
+			<li><img alt="" src="../../up/btn5.jpg"></li>
+			<li><img alt="" src="../../up/btn6.jpg"></li>
+			<li><img alt="" src="../../up/btn4.jpg"></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		$('li').css("opacity","0.5");
+		$('body').css("width","1024px");
+		$('body').css("height","1000px");
+		$('#home').toggle(
+			function(){
+				$('ul').stop().animate({left:50},500,"easeOutBounce");
+			},
+			function(){
+				$('ul').stop().animate({left:-150},500,"easeOutBounce");
+			}
+				
+		);
+		$('li').hover(function(){
+			$(this).animate({opacity:1},500);
+		},
+		function(){
+			$(this).animate({opacity:0.5},500);
+		});
+		$('body').mousemove(function(e){
+			var pos = e.pageY - (parseInt($('#container').css("height"))*0.5)+"px";
+			$('#container').stop().animate({top:pos},200);
+		});
+	</script>
+</body>
+</html>

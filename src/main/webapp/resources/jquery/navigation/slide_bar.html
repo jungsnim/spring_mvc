@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.10.4.custom.min.js"></script>
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+	
+}
+#wrap{
+	width:350px;
+	overflow: hidden;
+	background: #cf0;
+}
+#content{
+	height: 430px;
+	width: 930px;
+	position: relative;
+}
+#imgs{
+	float:left;
+}
+img{
+	border: 0;
+	width: 300px;
+	height:400px;
+}
+#scrollBar{
+	width: 350px;
+	height:30px;
+	background: #06c;
+}
+#bar{
+	width: 30px;
+	height: 30px;
+	background: #ff0;
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="wrap">
+ 
+   <div id="content">
+      <div id="imgs">
+         <a href="http://"><img src="../../up/btn0.jpg"></a>
+         <a href="http://"><img src="../../up/btn1.jpg"></a>
+         <a href="http://"><img src="../../up/btn2.jpg"></a>
+      </div>
+   </div>
+   <div id="scrollBar">
+   	<div id="bar"></div>
+   </div>   
+</div>
+</body>
+<script type="text/javascript">
+	$('#bar').draggable({axis:'x',containment:'parent'});
+	var min = 0;
+	var max = -(930-350);
+	
+	$('#bar').bind('drag',function(event,ui){
+		var barLeft = $('#bar').css("left");
+		barLeft = parseInt(barLeft);
+		var pos = (barLeft*(max - min))/320;
+		$('#content').css("left",pos);
+	});
+</script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.8.23.custom.min.js"></script>
+<style type="text/css">
+	body{
+		margin: 20px auto;
+		padding: 0;
+		width: 200px;
+		font-size: 13px;
+	}
+	#navi{
+		width: 200px;
+		text-indent: 10px;
+	}
+	#navi,#navi ul{
+		list-style: none;
+		margin: 0px;
+		padding:0px;
+	}
+	.group{
+		margin-bottom: 3px;
+	}
+	.title{
+		height:35px;
+		line-height: 3;
+		background: #99bb22;
+		cusor:pointer;
+	}
+	ul .sub li{
+		height:35px;
+		margin-bottom:2px;
+		line-height: 3;
+		background: #ffdd22;
+		cusor:pointer;
+	}
+	ul .sub li a{
+		text-decoration: none;
+		display: block;
+		width:100%;
+		color:#000;
+	}
+	ul .sub li:Hover{
+		background: #ccff00;
+	}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<ul id="navi">
+		<li class="group">
+			<div class="title">밍또</div>
+			<ul class="sub">
+				<li><a href="ming1">밍또1</a></li>
+				<li><a href="ming2">밍또2</a></li>
+				<li><a href="ming3">밍또3</a></li>
+			</ul>
+		</li>
+		<li class="group">
+			<div class="title">황태자</div>
+			<ul class="sub">
+				<li><a href="fish1">황태1</a></li>
+				<li><a href="fish2">황태2</a></li>
+			</ul>
+		</li>
+		<li class="group">
+			<div class="title">미솔</div>
+			<ul class="sub">
+				<li><a href="music1">도레미1</a></li>
+				<li><a href="music2">도레미2</a></li>
+				<li><a href="music3">도레미3</a></li>
+				<li><a href="music4">도레미4</a></li>
+			</ul>
+		</li>
+	</ul>
+	
+	<script type="text/javascript">
+		$('.sub').hide();
+		$('.title').click(function(){
+			if($(this).next().css("display")=="none"){
+				//$('.sub').slideUp(800,"easeOutBounce");
+				$(this).next().stop().slideDown(800,"easeOutBounce");
+			}else{
+				$(this).next().stop().slideUp(800,"easeOutBounce");
+			}
+			
+		});
+	</script>
+</body>
+</html>

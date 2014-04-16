@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.10.4.custom.min.js"></script>
+<style type="text/css">
+.drag{
+	float :left;
+	width:160px;
+	height:160px;
+	padding: 10 0 0 20;
+	background: url("../../up/post2.png") no-repeat;
+}
+.moving{
+	background: url("../../up/post.png") no-repeat;
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="drag">
+		<p>막상쓸만한 말이 없네</p>
+		<p>막상쓸만한 말이 없네</p>
+	</div>
+	<div class="drag">
+		<p>태자</p>
+		<p><img src="../../up/btn1.jpg"></p>
+	</div>
+	<div class="drag">
+		<p>막상쓸만한 말이 없네</p>
+		<p>막상쓸만한 말이 없네</p>
+	</div>
+	<script type="text/javascript">
+		$('.drag').draggable({cursor:"move",stack:".drag",opacity:0.7});
+		$('.drag').bind('dragstart',
+				function(){
+					$(this).addClass('moving')
+				});
+		$('.drag').bind('dragstop',
+				function(){
+					$(this).removeClass('moving')
+				});
+	</script>
+</body>
+</html>

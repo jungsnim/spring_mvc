@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.lightbox-0.5.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.lightbox-0.5.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="container">
+		<!-- 머리 부분 -->
+		<div id="head">
+			<h1><a href="#">만사가 귀찮아</a></h1>
+		</div>	
+		<!-- 네비게이션 (버튼) -->
+		<div id="navigation">
+			<ul>
+				<li id="lhome"><a href="#00">집으로</a></li>
+				<li id="lhome"><a href="#01">학원으로</a></li>
+				<li id="lhome"><a href="#02">회사로</a></li>
+				<li id="lhome"><a href="#03">절로</a></li>
+			</ul>
+		</div>
+		<!-- 내용 -->
+		<div id = "main">
+			<div id="content_left">
+				<div class="article">
+					<h3>아 졸려</h3>
+					<p>
+						<a href="../../up/btn5.jpg" title="아따 의준이 쎄다">
+							<img src="../../up/btn5.jpg" width="50px" height="70" border="0" 
+									class="pic_right">
+							
+							아나 모르나 확인하려고 
+							
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>	
+	<script type="text/javascript">
+		$('#content_left a').lightBox(
+			{
+				overlayBgColor :"#000",
+				overlayOpacity :0.3,
+				contailnerResizeSpeed:100
+			}		
+		);
+	</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.8.23.custom.min.js"></script>
+<style type="text/css">
+body{
+	margin: 20px auto;
+	padding: 0;
+	width: 600px;
+	font-size: 13px;
+	background: #5555FF;
+}
+div#slider{
+	margin: auto;
+	background: #fff;
+	width: 300px;
+	border: #f00 2px solid;
+	margin-top:100px;
+	overflow: hidden;
+	position: relative;
+}
+div#viewer{
+	width:300px;
+	height: 350px;
+	position: relative;
+}
+img{
+	position: absolute;
+	width: 300px;
+	height: 350px;
+}
+img#img0{left:0px;top:0px;}
+img#img1{left:300px;top:0px;}
+img#img2{left:600px;top:0px;}
+
+/*btn*/
+
+#btns{
+	position: absolute;
+	bottom: 2%;
+	right: 0;
+	margin: 0;
+	padding: 0;
+}
+#btns li{
+	float:left;
+	width: 16px;
+	height: 16px;
+	list-style: none;
+	margin-left: 20px;
+	background: #60FF00;
+	cusor:pointer;
+	padding: 1px;
+}
+#btns li a{
+	width:100%;
+	height:100%;
+	background: #FF0033;
+	display: block;
+	text-decoration: none;
+	coloe:#000000;
+}
+#btns li a:hover{
+	background: #ccff00;
+}
+#btnNB{
+	position:absolute;
+	margin: 0;
+	padding:0;
+	width: 100%;
+	bottom: 50%;
+}
+
+#btnNB #btnB{
+	position: relative;
+	display:inline;
+	float:left;
+	width: 40px;
+	height: 16px;
+	list-style: none;
+	margin-left: 0px;
+	background: #60FF00;
+	padding: 1px;
+}
+#btnNB #btnN{
+	position: relative;
+	float:right;
+	display:inline;
+	width: 40px;
+	height: 16px;
+	list-style: none;
+	margin-left: 0px;
+	background: #60FF00;
+	padding: 1px;
+}
+#btnNB li a{
+	width:100%;
+	height:100%;
+	background: #FF0033;
+	display: block;
+	text-decoration: none;
+	coloe:#000000;
+}
+#btnNB li a:hover{
+	background: #ccff00;
+}
+
+
+#btns li a.active{
+	background: #FFFF00;
+}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="slider">
+		<div id="viewer">
+			<img id="img0" alt="" src="../../up/btn0.jpg">
+			<img id="img1" alt="" src="../../up/btn1.jpg">
+			<img id="img2" alt="" src="../../up/btn2.jpg">
+		</div>
+		<ul id="btns">
+			<li id="btn0"><a class ="active" href="../../up/btn0.jpg">0</a></li>
+			<li id="btn1"><a href="../../up/btn1.jpg">1</a></li>
+			<li id="btn2"><a href="../../up/btn2.jpg">2</a></li>
+		</ul>
+		<ul id="btnNB">
+			<li id="btnN">next</li>
+			<li id="btnB">prev</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var cnt =0;
+		$('ul li a').click(function(){
+			
+			$('ul li a').removeClass('active');
+			$(this).addClass('active');
+			
+			cnt = $(this).text();
+			slideTarget(cnt);
+			clearInterval(timer);
+			timer = setInterval("slideLoop()", 4000);
+			return false;
+		});
+		$('#viewer').hover(function(){
+			clearInterval(timer);
+			$('#viewer').stop();
+		},function(){
+			slideTarget(cnt);
+			timer = setInterval("slideLoop()", 3000);
+		});
+	
+		function slideLoop(){
+			
+			$('ul li a').removeClass('active');
+			cnt++;
+			cnt= cnt > 2 ? 0 : cnt;
+			var activeTarget = 'ul #btn'+cnt+' a';
+			$(activeTarget).addClass('active');
+			slideTarget(cnt);
+		}
+		function slideTarget(n){
+			var pos = (n)*(-300);
+			$('#viewer').animate({left:pos},1000,'easeOutBounce');
+		}
+		var timer = setInterval("slideLoop()", 3000);
+	</script>
+</body>
+</html>
